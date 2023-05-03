@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_package="me.grpc.stubs2";
+import "google/protobuf/timestamp.proto";
+
+
+service ChatService {
+  rpc SendChatMessage (stream ChatMessage) returns (stream ChatMessageFromServer);
+}
+
+message ChatMessage {
+  string sender_username = 1;
+  string message = 2;
+}
+
+
+message ChatMessageFromServer {
+  google.protobuf.Timestamp timestamp = 1;
+  ChatMessage message = 2;
+}

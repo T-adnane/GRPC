@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_package = "me.grpc.stubs";
+
+service Game {
+  // La méthode pour envoyer une tentative de numéro par un client
+  rpc Guess (GuessRequest) returns (GuessResponse) {}
+
+  // La méthode pour récupérer le gagnant
+  rpc GetWinner (WinnerRequest) returns (WinnerResponse) {}
+}
+
+message GuessRequest {
+  int32 guess = 1;
+}
+
+message GuessResponse {
+  string message = 1;
+}
+
+message WinnerRequest {}
+
+message WinnerResponse {
+  string winner = 1;
+}
